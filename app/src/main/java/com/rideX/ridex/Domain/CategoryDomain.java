@@ -1,11 +1,11 @@
 package com.rideX.ridex.Domain;
 
-public class categoryDomain {
+public class CategoryDomain {
     private String title;
     private int i;
     private String picUrl;
 
-    public categoryDomain() {
+    public CategoryDomain() {
     }
 
     public String getTitle() {
