@@ -1,4 +1,4 @@
-package com.rideX.ridex;
+package com.rideX.ridex.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,8 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.rideX.ridex.R;
 
 public class HomePageActivity extends AppCompatActivity {
 
