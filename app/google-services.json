@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "411964193160",
+    "project_id": "ridex-221",
+    "storage_bucket": "ridex-221.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411964193160:android:374af51624b812b77ca23d",
+        "android_client_info": {
+          "package_name": "com.rideX.ridex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI8-tvDWoNAkAiZ6tMw8DtFmzF25Hhax0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

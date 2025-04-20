@@ -33,33 +33,33 @@ public class CarViewActivity extends BaseActivity {
         //setContentView(R.layout.activity_car_view);
         setContentView(binding.getRoot());
 
-        initCategoryList();
+        //initCategoryList();
     }
 
-    private void initCategoryList() {
-        DatabaseReference myref = database.getReference("Category");
-        binding.progressBarCategory.setVisibility(View.VISIBLE);
-
-        ArrayList<CategoryDomain> items = new ArrayList<>();
-        myref.addListenerForSingleValueEvent(new ValueEventListener() {
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(snapsot.exists()){
-                    for(DataSnapshot issue : snapshot.getChildren()){
-                        items.add(issue.getValue(CategoryDomain.class));
-                    }
-                    if(!items.isEmpty())  {
-                        binding.recyclerViewCategory.setLayoutManager(new LinearLayoutManager(CarViewActivity.this, LinearLayoutManager.HORIZONTAL, false));
-                        binding.recyclerViewCategory.setAdapter(new CategoryAdapter(items));
-                        binding.recyclerViewCategory.setNestedScrollingEnabled(true);
-                    }
-                    binding.progressBarCategory.setVisibility(View.GONE);
-                }
-            }
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-    }
+//    private void initCategoryList() {
+//        DatabaseReference myref = database.getReference("Category");
+//        binding.progressBarCategory.setVisibility(View.VISIBLE);
+//
+//        ArrayList<CategoryDomain> items = new ArrayList<>();
+//        myref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if(snapsot.exists()){
+//                    for(DataSnapshot issue : snapshot.getChildren()){
+//                        items.add(issue.getValue(CategoryDomain.class));
+//                    }
+//                    if(!items.isEmpty())  {
+//                        binding.recyclerViewCategory.setLayoutManager(new LinearLayoutManager(CarViewActivity.this, LinearLayoutManager.HORIZONTAL, false));
+//                        binding.recyclerViewCategory.setAdapter(new CategoryAdapter(items));
+//                        binding.recyclerViewCategory.setNestedScrollingEnabled(true);
+//                    }
+//                    binding.progressBarCategory.setVisibility(View.GONE);
+//                }
+//            }
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
 
 }
