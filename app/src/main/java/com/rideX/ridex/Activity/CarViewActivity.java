@@ -1,14 +1,19 @@
 package com.rideX.ridex.Activity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.rideX.ridex.Adapter.CarAdapter;
@@ -18,73 +23,120 @@ import com.rideX.ridex.Model.CategoryModel;
 import com.rideX.ridex.R;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CarViewActivity extends AppCompatActivity {
-    RecyclerView carRecyclerView, categoryRecyclerView;
-    ArrayList<CarModel> carList = new ArrayList<>();
-    ArrayList<CategoryModel> categoryList = new ArrayList<>();
+public class CarViewActivity extends AppCompatActivity implements CategoryAdapter.OnCategoryClickListener {
+
+    private RecyclerView categoryRecyclerView, carRecyclerView;
+    private CategoryAdapter categoryAdapter;
+    private CarAdapter carAdapter;
+    private final List<CategoryModel> categoryList = new ArrayList<>();
+    private final List<CarModel> carList = new ArrayList<>();
+    private final List<CarModel> fullCarList = new ArrayList<>(); // backup for filtering
+
+    private ProgressBar progressBar;
+
+    private final String API_URL = "http://your-api-url.com/api/car-data"; // Change this to actual API endpoint
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_view);
 
-        carRecyclerView = findViewById(R.id.carRecyclerView);
         categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
+        carRecyclerView = findViewById(R.id.carRecyclerView);
+        progressBar = findViewById(R.id.progressBarCar); // progressBarCategory now didnt take for simplicity
 
-        carRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        // Set up RecyclerViews
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        carRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        fetchCarsAndCategories();
+        categoryAdapter = new CategoryAdapter(this, categoryList, this);
+        carAdapter = new CarAdapter(this, carList);
+
+        categoryRecyclerView.setAdapter(categoryAdapter);
+        carRecyclerView.setAdapter(carAdapter);
+
+        fetchData();
     }
 
-    private void fetchCarsAndCategories() {
-        String url = "YOUR_API_URL_HERE"; // Replace with API endpoint
+    private void fetchData() {
+        progressBar.setVisibility(View.VISIBLE);
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(
+                Request.Method.GET, API_URL, null,
                 response -> {
                     try {
-                        JSONArray categories = response.getJSONArray("Category");
-                        JSONArray cars = response.getJSONArray("Cars");
+                        if (response.getInt("status") == 200) {
+                            JSONArray categories = response.getJSONArray("Category");
+                            JSONArray cars = response.getJSONArray("Cars");
 
-                        for (int i = 0; i < categories.length(); i++) {
-                            JSONObject obj = categories.getJSONObject(i);
-                            categoryList.add(new CategoryModel(
-                                    obj.getInt("id"),
-                                    obj.getString("picName"),
-                                    obj.getString("title")
-                            ));
+                            categoryList.clear();
+                            carList.clear();
+                            fullCarList.clear();
+
+                            for (int i = 0; i < categories.length(); i++) {
+                                JSONObject cat = categories.getJSONObject(i);
+                                categoryList.add(new CategoryModel(
+                                        cat.getInt("id"),
+                                        cat.getString("picName"),
+                                        cat.getString("title")
+                                ));
+                            }
+
+                            for (int i = 0; i < cars.length(); i++) {
+                                JSONObject car = cars.getJSONObject(i);
+                                CarModel model = new CarModel(
+                                        car.getString("title"),
+                                        car.getString("picName"),
+                                        car.getString("contactBuyer"),
+                                        car.getString("milageRan"),
+                                        car.getInt("price"),
+                                        (float) car.getDouble("rating"),
+                                        car.getString("TotalCapacity"),
+                                        car.getString("description")
+                                );
+                                carList.add(model);
+                                fullCarList.add(model);
+                            }
+
+                            categoryAdapter.notifyDataSetChanged();
+                            carAdapter.notifyDataSetChanged();
                         }
 
-                        for (int i = 0; i < cars.length(); i++) {
-                            JSONObject obj = cars.getJSONObject(i);
-                            carList.add(new CarModel(
-                                    obj.getString("title"),
-                                    obj.getString("picName"),
-                                    obj.getString("EngineOutput"),
-                                    obj.getString("HighestSpeed"),
-                                    obj.getInt("price"),
-                                    obj.getDouble("rating"),
-                                    obj.getString("TotalCapacity"),
-                                    obj.getString("description")
-                            ));
-                        }
-
-                        CarAdapter carAdapter = new CarAdapter(CarViewActivity.this, carList);
-                        carRecyclerView.setAdapter(carAdapter);
-
-                        CategoryAdapter categoryAdapter = new CategoryAdapter(CarViewActivity.this, categoryList);
-                        categoryRecyclerView.setAdapter(categoryAdapter);
-
-                    } catch (JSONException e) {
+                        progressBar.setVisibility(View.GONE);
+                    } catch (Exception e) {
                         e.printStackTrace();
+                        Toast.makeText(this, "Parse Error", Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
                     }
-                }, error -> Toast.makeText(this, "Error fetching data", Toast.LENGTH_SHORT).show());
+                },
+                error -> {
+                    Toast.makeText(this, "API Error", Toast.LENGTH_SHORT).show();
+                    Log.e("VolleyError", error.toString());
+                    progressBar.setVisibility(View.GONE);
+                });
 
-        Volley.newRequestQueue(this).add(request);
+        queue.add(jsonRequest);
+    }
+
+    // When a category is selected
+    @Override
+    public void onCategoryClick(int categoryId) {
+        List<CarModel> filteredList = new ArrayList<>();
+
+        // For simplicity, just filter by index (position of category)
+        // later will be implement a backend-side filter if needed
+        for (int i = 0; i < fullCarList.size(); i++) {
+            if (i % categoryList.size() == categoryId) { // Fake match just for filtering purpose now
+                filteredList.add(fullCarList.get(i));
+            }
+        }
+
+        carAdapter.updateList(filteredList);
     }
 }

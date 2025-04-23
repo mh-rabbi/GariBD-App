@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.rideX.ridex.Model.CategoryModel;
+import com.rideX.ridex.R;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
-    private Context context;
-    private List<CategoryModel> categoryList;
-    private OnCategoryClickListener listener;
+    private final Context context;
+    private final List<CategoryModel> categoryList;
+    private final OnCategoryClickListener listener;
 
     public interface OnCategoryClickListener {
         void onCategoryClick(int categoryId);

@@ -1,9 +1,14 @@
 package com.rideX.ridex.Model;
 
 public class CarModel {
-    private String title, picName, contactBuyer, milageRan, totalCapacity, description;
-    private int price;
-    private double rating;
+    private final String title;
+    private final String picName;
+    private final String contactBuyer;
+    private final String milageRan;
+    private final String totalCapacity;
+    private final String description;
+    private final int price;
+    private final double rating;
 
     // Constructor
     public CarModel(String title, String picName, String contactBuyer, String milageRan,

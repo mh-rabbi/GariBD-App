@@ -9,7 +9,7 @@
     android:background="@drawable/grey_bg">
 
     <ImageView
-        android:id="@+id/pic"
+        android:id="@+id/carImage"
         android:layout_width="130dp"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
@@ -18,7 +18,7 @@
         android:src="@drawable/intro_car" />
 
     <TextView
-        android:id="@+id/titleTxt"
+        android:id="@+id/carTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -30,10 +30,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pic" />
+        app:layout_constraintTop_toBottomOf="@+id/carImage" />
 
     <TextView
-        android:id="@+id/priceTxt"
+        android:id="@+id/carPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0/="
@@ -42,7 +42,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/carTitle"
 
         />
 

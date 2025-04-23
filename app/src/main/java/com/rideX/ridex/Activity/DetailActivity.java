@@ -20,7 +20,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        carImage = findViewById(R.id.pic);
+        carImage = findViewById(R.id.carImage);
         titleTxt = findViewById(R.id.titleTxt);
         ratingTxt = findViewById(R.id.ratingTxt);
         descriptionTxt = findViewById(R.id.descriptionTxt);
@@ -43,7 +43,7 @@ public class DetailActivity extends AppCompatActivity {
         ratingTxt.setText(String.valueOf(rating));
         descriptionTxt.setText(description);
         totalCapacityTxt.setText(totalCapacity);
-        milageRanTxt.setText(milageRan);
+        contactBuyerTxt.setText(contactBuyer);
         milageRanTxt.setText(milageRan);
         priceTxt.setText(price + "/=");
 

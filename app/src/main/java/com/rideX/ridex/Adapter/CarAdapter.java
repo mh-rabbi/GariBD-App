@@ -1,5 +1,6 @@
 package com.rideX.ridex.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,12 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.rideX.ridex.Activity.DetailActivity;
 import com.rideX.ridex.Model.CarModel;
+import com.rideX.ridex.R;
 
 import java.util.List;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
-    private Context context;
+    private final Context context;
     private List<CarModel> carList;
 
     public CarAdapter(Context context, List<CarModel> carList) {
@@ -26,6 +28,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         this.carList = carList;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void updateList(List<CarModel> newList) {
         carList = newList;
         notifyDataSetChanged();

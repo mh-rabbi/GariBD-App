@@ -41,7 +41,7 @@
                         app:srcCompat="@drawable/back1" />
 
                     <TextView
-                        android:id="@+id/titleTxt"
+                        android:id="@+id/maintitleTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Car Detail"
@@ -64,7 +64,7 @@
                         app:srcCompat="@drawable/fav_icon" />
 
                     <ImageView
-                        android:id="@id/pic"
+                        android:id="@id/carImage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32dp"
@@ -237,7 +237,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
-                                    android:src="@drawable/engine" />
+                                    android:src="@drawable/contact" />
 
                                 <TextView
                                     android:id="@+id/textView11"
@@ -245,12 +245,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16sp"
                                     android:layout_marginTop="8dp"
-                                    android:text="Engine Output"
+                                    android:text="Contact \nBuyer"
                                     android:textColor="@color/black"
                                     android:textSize="16sp" />
 
                                 <TextView
-                                    android:id="@+id/engineOutputTxt"
+                                    android:id="@+id/contactBuyerTxt"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"

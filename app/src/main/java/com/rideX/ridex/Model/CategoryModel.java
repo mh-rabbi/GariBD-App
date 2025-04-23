@@ -1,8 +1,9 @@
 package com.rideX.ridex.Model;
 
 public class CategoryModel {
-    private int id;
-    private String picName, title;
+    private final int id;
+    private final String picName;
+    private final String title;
 
     public CategoryModel(int id, String picName, String title) {
         this.id = id;
