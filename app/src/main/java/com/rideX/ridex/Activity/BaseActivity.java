@@ -14,7 +14,7 @@ import com.rideX.ridex.R;
 
 public class BaseActivity extends AppCompatActivity {
 
-    public FirebaseDatabase database;
+   // public FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class BaseActivity extends AppCompatActivity {
       /*  EdgeToEdge.enable(this);
         setContentView(R.layout.activity_base);
 */
-        database = FirebaseDatabase.getInstance();
+      //  database = FirebaseDatabase.getInstance();
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
