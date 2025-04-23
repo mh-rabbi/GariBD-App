@@ -42,7 +42,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     public void onBindViewHolder(@NonNull CarViewHolder holder, int position) {
         CarModel car = carList.get(position);
         holder.title.setText(car.getTitle());
-        holder.price.setText("$" + car.getPrice());
+        holder.price.setText("BDT" + car.getPrice());
 
         String imageUrl = "http://your-api-url.com/images/" + car.getPicName(); // Replace base URL
         Glide.with(context).load(imageUrl).into(holder.image);

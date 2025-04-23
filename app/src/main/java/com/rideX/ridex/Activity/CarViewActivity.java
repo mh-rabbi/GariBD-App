@@ -1,6 +1,5 @@
 package com.rideX.ridex.Activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.rideX.ridex.Adapter.CarAdapter;
 import com.rideX.ridex.Adapter.CategoryAdapter;
 import com.rideX.ridex.Model.CarModel;
 import com.rideX.ridex.Model.CategoryModel;
@@ -43,7 +43,7 @@ public class CarViewActivity extends AppCompatActivity {
     }
 
     private void fetchCarsAndCategories() {
-        String url = "YOUR_API_URL_HERE"; // Replace with your API endpoint
+        String url = "YOUR_API_URL_HERE"; // Replace with API endpoint
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {

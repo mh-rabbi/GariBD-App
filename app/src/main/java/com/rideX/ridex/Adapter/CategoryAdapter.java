@@ -2,51 +2,68 @@ package com.rideX.ridex.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
-import com.rideX.ridex.databinding.ViewholderCategoryBinding;
-import java.util.ArrayList;
+import com.rideX.ridex.Model.CategoryModel;
 
+import java.util.List;
 
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Viewholder> {
-    private ArrayList<CategoryDomain> items;
     private Context context;
+    private List<CategoryModel> categoryList;
+    private OnCategoryClickListener listener;
 
-    public CategoryAdapter(ArrayList<CategoryDomain> items) {
-        this.items = items;
+    public interface OnCategoryClickListener {
+        void onCategoryClick(int categoryId);
+    }
+
+    public CategoryAdapter(Context context, List<CategoryModel> categoryList, OnCategoryClickListener listener) {
+        this.context = context;
+        this.categoryList = categoryList;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public CategoryAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        ViewholderCategoryBinding binding = ViewholderCategoryBinding.inflate(LayoutInflater.from(context),parent,false);
-        return new Viewholder(binding);
+    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.viewholder_category, parent, false);
+        return new CategoryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAdapter.Viewholder holder, int position) {
-        holder.binding.titleTxt.setText(items.get(position).getTitle());
+    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
+        CategoryModel category = categoryList.get(position);
+        holder.title.setText(category.getTitle());
 
-        Glide.with(context)
-                .load(items.get(position).getPicUrl())
-                .into(holder.binding.pic);
+        String imageUrl = "http://your-api-url.com/images/" + category.getPicName(); // Replace base URL
+        Glide.with(context).load(imageUrl).into(holder.image);
+
+        holder.itemView.setOnClickListener(v -> {
+            listener.onCategoryClick(category.getId());
+        });
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return categoryList.size();
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder {
-        ViewholderCategoryBinding binding;
-        public Viewholder(ViewholderCategoryBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
+    public static class CategoryViewHolder extends RecyclerView.ViewHolder {
+        TextView title;
+        ImageView image;
+
+        public CategoryViewHolder(@NonNull View itemView) {
+            super(itemView);
+            title = itemView.findViewById(R.id.categoryTitle);
+            image = itemView.findViewById(R.id.categoryImage);
         }
     }
 }
