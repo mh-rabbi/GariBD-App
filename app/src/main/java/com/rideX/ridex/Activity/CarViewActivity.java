@@ -1,8 +1,10 @@
 package com.rideX.ridex.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -49,6 +51,17 @@ public class CarViewActivity extends AppCompatActivity implements CategoryAdapte
         categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
         carRecyclerView = findViewById(R.id.carRecyclerView);
         progressBar = findViewById(R.id.progressBarCar); // progressBarCategory now didnt take for simplicity
+
+        ImageView homeBtn = findViewById(R.id.homeBtn);//bottom navigation panel home button
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CarViewActivity.this, HomePageActivity.class);
+                startActivity(intent);
+                finish(); // Optional: prevents user from going back to CarViewActivity when pressing back
+            }
+        });
 
         // Set up RecyclerViews
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
