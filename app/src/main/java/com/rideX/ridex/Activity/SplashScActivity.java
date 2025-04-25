@@ -22,7 +22,7 @@ public class SplashScActivity extends AppCompatActivity {
                 try {
                     sleep(2000);
                     runOnUiThread(() -> {
-                        startActivity(new Intent(SplashScActivity.this, CarViewActivity.class));
+                        startActivity(new Intent(SplashScActivity.this, HomePageActivity.class));
                         finish();
                     });
                 } catch (InterruptedException e) {
