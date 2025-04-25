@@ -17,13 +17,6 @@ public class HomePageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
-        CardView cv = findViewById(R.id.p1);
-        cv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(HomePageActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
+
     }
 }

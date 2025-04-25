@@ -53,13 +53,20 @@ public class CarViewActivity extends AppCompatActivity implements CategoryAdapte
         progressBar = findViewById(R.id.progressBarCar); // progressBarCategory now didnt take for simplicity
 
         ImageView homeBtn = findViewById(R.id.homeBtn);//bottom navigation panel home button
-
+        ImageView favBtn = findViewById(R.id.fav_btn);
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CarViewActivity.this, HomePageActivity.class);
                 startActivity(intent);
                 finish(); // Optional: prevents user from going back to CarViewActivity when pressing back
+            }
+        });
+
+        favBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CarViewActivity.this, DetailActivity.class));
             }
         });
 
