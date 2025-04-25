@@ -16,6 +16,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
+import com.rideX.ridex.Fragments.AboutUsFragment;
+import com.rideX.ridex.Fragments.HomeFragment;
+import com.rideX.ridex.Fragments.ProfileFragment;
+import com.rideX.ridex.Fragments.SettingsFragment;
+import com.rideX.ridex.Fragments.ShareFragment;
 import com.rideX.ridex.R;
 
 public class HomePageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{

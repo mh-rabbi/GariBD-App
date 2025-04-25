@@ -1,6 +1,7 @@
-package com.rideX.ridex.Activity;
+package com.rideX.ridex.Fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.rideX.ridex.Activity.CarViewActivity;
 import com.rideX.ridex.R;
 
 public class HomeFragment extends Fragment {
@@ -23,7 +25,17 @@ public class HomeFragment extends Fragment {
         CardView btnRent = view.findViewById(R.id.cardbtn_rent);
         CardView btnSetting = view.findViewById(R.id.btn_setting);
         CardView btnSupport = view.findViewById(R.id.btn_support);
+        CardView btnCar = view.findViewById(R.id.btn_car);
+        // CardView btnFavorite = view.findViewById(R.id.cardbtn_favorite);
+       // CardView btnHistory = view.findViewById(R.id.cardbtn_history);
+       // CardView btnBike = view.findViewById(R.id.btn_bike);
 
+        btnCar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), CarViewActivity.class));
+            }
+        });
         btnRent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

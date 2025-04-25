@@ -1,4 +1,4 @@
-package com.rideX.ridex.Activity;
+package com.rideX.ridex.Fragments;
 
 import androidx.fragment.app.Fragment;
 
