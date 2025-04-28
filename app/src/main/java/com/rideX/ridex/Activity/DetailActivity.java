@@ -29,25 +29,25 @@ public class DetailActivity extends AppCompatActivity {
         contactBuyerTxt = findViewById(R.id.contactBuyerTxt);
         priceTxt = findViewById(R.id.priceTxt);
 
-        Intent intent = getIntent();
-        String title = intent.getStringExtra("title");
-        String picName = intent.getStringExtra("picName");
-        String contactBuyer = intent.getStringExtra("contactBuyer");
-        String milageRan = intent.getStringExtra("milageRan");
-        int price = intent.getIntExtra("price", 0);
-        double rating = intent.getDoubleExtra("rating", 0);
-        String totalCapacity = intent.getStringExtra("totalCapacity");
-        String description = intent.getStringExtra("description");
+//        Intent intent = getIntent();
+//        String title = intent.getStringExtra("title");
+//        String picName = intent.getStringExtra("picName");
+//        String contactBuyer = intent.getStringExtra("contactBuyer");
+//        String milageRan = intent.getStringExtra("milageRan");
+//        int price = intent.getIntExtra("price", 0);
+//        double rating = intent.getDoubleExtra("rating", 0);
+//        String totalCapacity = intent.getStringExtra("totalCapacity");
+//        String description = intent.getStringExtra("description");
+//
+//        titleTxt.setText(title);
+//        ratingTxt.setText(String.valueOf(rating));
+//        descriptionTxt.setText(description);
+//        totalCapacityTxt.setText(totalCapacity);
+//        contactBuyerTxt.setText(contactBuyer);
+//        milageRanTxt.setText(milageRan);
+//        priceTxt.setText(price + "/=");
 
-        titleTxt.setText(title);
-        ratingTxt.setText(String.valueOf(rating));
-        descriptionTxt.setText(description);
-        totalCapacityTxt.setText(totalCapacity);
-        contactBuyerTxt.setText(contactBuyer);
-        milageRanTxt.setText(milageRan);
-        priceTxt.setText(price + "/=");
-
-        int imageId = getResources().getIdentifier(picName.replace(".png", ""), "drawable", getPackageName());
-        carImage.setImageResource(imageId);
+//        int imageId = getResources().getIdentifier(picName.replace(".png", ""), "drawable", getPackageName());
+//        carImage.setImageResource(imageId);
     }
 }

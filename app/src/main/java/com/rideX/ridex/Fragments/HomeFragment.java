@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.rideX.ridex.Activity.CarViewActivity;
+import com.rideX.ridex.Activity.SupportActivity;
 import com.rideX.ridex.R;
 
 public class HomeFragment extends Fragment {
@@ -51,7 +52,7 @@ public class HomeFragment extends Fragment {
         btnSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getContext(), SupportActivity.class));
             }
         });
         btnPost.setOnClickListener(new View.OnClickListener() {

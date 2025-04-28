@@ -15,6 +15,9 @@
         android:theme="@style/Theme.RideX"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.SupportActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.SplashScActivity"
             android:exported="true">
             <intent-filter>
@@ -28,8 +31,7 @@
             android:exported="false" />
         <activity
             android:name=".Activity.CarViewActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Activity.SearchViewActivity"
             android:exported="false" />
@@ -42,6 +44,7 @@
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
+
 
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
