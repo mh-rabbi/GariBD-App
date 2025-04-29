@@ -15,6 +15,9 @@
         android:theme="@style/Theme.RideX"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.RentPage"
+            android:exported="false" />
+        <activity
             android:name=".Activity.SupportActivity"
             android:exported="false" />
         <activity
@@ -31,8 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".Activity.CarViewActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".Activity.SearchViewActivity"
             android:exported="false" />
