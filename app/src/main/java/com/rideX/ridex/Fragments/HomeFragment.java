@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.rideX.ridex.Activity.CarViewActivity;
+import com.rideX.ridex.Activity.RentPage;
 import com.rideX.ridex.Activity.SupportActivity;
 import com.rideX.ridex.R;
 
@@ -40,7 +41,7 @@ public class HomeFragment extends Fragment {
         btnRent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getContext(), RentPage.class));
             }
         });
         btnSetting.setOnClickListener(new View.OnClickListener() {

@@ -53,7 +53,6 @@ public class SignUpTabFragment extends Fragment {
 
         if (!password.equals(confirmPassword)) {
             confirmPasswordInput.setError("Passwords do not match");
-            return;
         }
 //        DBcrud valueInsert = new DBcrud(getContext());
 //        if(valueInsert.userInsert(email,password)!=-1){

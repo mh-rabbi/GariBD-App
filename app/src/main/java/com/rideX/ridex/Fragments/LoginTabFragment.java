@@ -45,7 +45,6 @@ public class LoginTabFragment extends Fragment {
 
         if (!isComplexPassword(password)) {
             edtPass.setError("Password must be 8+ chars, 1 upper, 1 number, 1 symbol");
-            return;
         }
 
 

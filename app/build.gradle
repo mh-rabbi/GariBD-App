@@ -46,6 +46,7 @@ dependencies {
     implementation libs.glide // Glide for image loading
     implementation libs.gson
     implementation libs.firebase.database
+    implementation libs.androidx.constraintlayout
 
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

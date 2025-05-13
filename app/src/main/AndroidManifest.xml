@@ -34,7 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".Activity.CarViewActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".Activity.SearchViewActivity"
             android:exported="false" />

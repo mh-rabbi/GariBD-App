@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rideX.ridex.R;
 
 public class RentAdapter extends RecyclerView.Adapter<RentAdapter.RentViewHolder> {
-    String comName[]={"OBHAI", "Cholo", "Car Chai", "Rent A Car Bangladesh", "BRB Car Rental", "DriveIt by Bondstein", "Pathao", "Uber Moto", "Garivara", "RideKaru"};
-    String comEmail[]={"obhai@gmail.com", "cholo@gmail.com", "carchai@gmail.com", "rentacarbangladesh@gmail.com", "brbcarrental@gmail.com", "driveitbd@gmail.com", "pathao@gmail.com", "ubermoto@gmail.com", "garivara@gmail.com", "ridekaru@gmail.com"};
-    String comPhone[]={"16633", "01313-875757", "01742-330044", "01917-630502", "01743-440618", "09639-595959", "09678-100800", "09612-888111", "09611-911911", "01896-510131"};
-    int comImg[]={R.drawable.rent1, R.drawable.rent2, R.drawable.rent3, R.drawable.rent4, R.drawable.rent5, R.drawable.rent6, R.drawable.rent7, R.drawable.rent8, R.drawable.rent9, R.drawable.rent10};
+    String[] comName ={"OBHAI", "Cholo", "Car Chai", "Rent A Car Bangladesh", "BRB Car Rental", "DriveIt by Bondstein", "Pathao", "Uber Moto", "Garivara", "RideKaru"};
+    String[] comEmail ={"obhai@gmail.com", "cholo@gmail.com", "carchai@gmail.com", "rentacarbangladesh@gmail.com", "brbcarrental@gmail.com", "driveitbd@gmail.com", "pathao@gmail.com", "ubermoto@gmail.com", "garivara@gmail.com", "ridekaru@gmail.com"};
+    String[] comPhone ={"16633", "01313-875757", "01742-330044", "01917-630502", "01743-440618", "09639-595959", "09678-100800", "09612-888111", "09611-911911", "01896-510131"};
+    int[] comImg ={R.drawable.rent1, R.drawable.rent2, R.drawable.rent3, R.drawable.rent4, R.drawable.rent5, R.drawable.rent6, R.drawable.rent7, R.drawable.rent8, R.drawable.rent9, R.drawable.rent10};
     @NonNull
     @Override
     public RentAdapter.RentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
