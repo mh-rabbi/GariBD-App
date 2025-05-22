@@ -33,6 +33,11 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         carList = newList;
         notifyDataSetChanged();
     }
+    @SuppressLint("NotifyDataSetChanged")
+    public void setData(List<CarModel> newList) {
+        carList = newList;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override

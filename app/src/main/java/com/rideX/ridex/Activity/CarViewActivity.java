@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.slider.RangeSlider;
 import com.rideX.ridex.Adapter.CarAdapter;
 import com.rideX.ridex.Adapter.CategoryAdapter;
 import com.rideX.ridex.Model.CarModel;
@@ -51,6 +56,8 @@ public class CarViewActivity extends AppCompatActivity implements CategoryAdapte
         categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
         carRecyclerView = findViewById(R.id.carRecyclerView);
         progressBar = findViewById(R.id.progressBarCar); // progressBarCategory now didnt take for simplicity
+        ImageView filterIcon = findViewById(R.id.img_filter);
+        filterIcon.setOnClickListener(v -> showFilterDialog());
 
         ImageView homeBtn = findViewById(R.id.homeBtn);//bottom navigation panel home button
         ImageView favBtn = findViewById(R.id.fav_btn);
@@ -81,6 +88,45 @@ public class CarViewActivity extends AppCompatActivity implements CategoryAdapte
         carRecyclerView.setAdapter(carAdapter);
 
         fetchData();
+    }
+
+    private void showFilterDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.filter_dialog, null);
+        builder.setView(view);
+        AlertDialog dialog = builder.create();
+
+        RangeSlider priceSlider = view.findViewById(R.id.sliderPrice);
+        TextView priceRangeText = view.findViewById(R.id.priceRangeText);
+        Button btnApply = view.findViewById(R.id.btnApplyFilter);
+        // Show current price range on slider change
+        priceSlider.addOnChangeListener((slider, value, fromUser) -> {
+            List<Float> values = priceSlider.getValues();
+            priceRangeText.setText((float) values.get(0) + " - " + (float) values.get(1) + " Tk");
+        });
+
+        btnApply.setOnClickListener(v -> {
+            int minPrice = Math.round(priceSlider.getValues().get(0));
+            int maxPrice = Math.round(priceSlider.getValues().get(1));
+            applyFilter(minPrice, maxPrice);
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    private void applyFilter(int minPrice, int maxPrice) {
+        List<CarModel> filteredList = new ArrayList<>();
+        for (CarModel car : fullCarList) {
+            try {
+                if (car.getPrice() >= minPrice && car.getPrice() <= maxPrice) {
+                    filteredList.add(car);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        carAdapter.setData(filteredList);
     }
 
     private void fetchData() {

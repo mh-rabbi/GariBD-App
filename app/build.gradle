@@ -42,7 +42,7 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation libs.recyclerview
-
+    implementation libs.material.v1110 // or latest
     implementation libs.glide // Glide for image loading
     implementation libs.gson
     implementation libs.firebase.database
