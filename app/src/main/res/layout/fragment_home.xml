@@ -195,7 +195,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
-                android:src="@drawable/star" />
+                android:src="@drawable/favourite" />
 
             <TextView
                 android:layout_width="match_parent"

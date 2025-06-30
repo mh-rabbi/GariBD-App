@@ -1,5 +1,6 @@
 package com.rideX.ridex.Fragments;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;

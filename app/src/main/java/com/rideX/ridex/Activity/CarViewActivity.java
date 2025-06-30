@@ -102,7 +102,7 @@ public class CarViewActivity extends AppCompatActivity implements CategoryAdapte
         // Show current price range on slider change
         priceSlider.addOnChangeListener((slider, value, fromUser) -> {
             List<Float> values = priceSlider.getValues();
-            priceRangeText.setText((float) values.get(0) + " - " + (float) values.get(1) + " Tk");
+            priceRangeText.setText(values.get(0) + " - " + values.get(1) + " Tk");
         });
 
         btnApply.setOnClickListener(v -> {
